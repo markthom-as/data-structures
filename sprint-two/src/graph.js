@@ -57,18 +57,9 @@ Graph.prototype.forEachNode = function(cb){
   for ( var key in this.nodes ) {
     cb(key);
   }
-  console.log(this.nodes);
-  // _.each(list, function(value){
-  //   console.log(list);
-  //   cb(value)});
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-
-  //a: {b: true,
-  //    c: true,
-  //    }
 
