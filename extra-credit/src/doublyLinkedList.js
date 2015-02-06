@@ -33,9 +33,20 @@ var DoublyLinkedList = function(){
     return temp;
   };
 
-  // list.addToHead = function(value) {
-  //   this.head = new Node(value);
-  // }
+  list.addToHead = function(value) {
+    var tempNode = Node(value);
+    tempNode.next = this.head;
+    this.head.previous = tempNode;
+    this.head = tempNode;
+    return undefined;
+  }
+
+  list.removeTail = function() {
+    var oldTail = this.tail;
+    this.tail = oldTail.previous;
+    this.tail.next = null;
+    return oldTail.value;
+  };
 
   list.contains = function(target){
     var node;

@@ -68,4 +68,27 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.tail.previous.value).to.equal(5);
   });
 
+  it("new head adds a new head as expected", function(){
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToHead(5);
+    doublyLinkedList.addToTail(2);
+    expect(doublyLinkedList.head.value).to.equal(5);
+  });
+
+  it("old head's previous value points to new head", function(){
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToHead(5);
+    doublyLinkedList.addToTail(2);
+    expect(doublyLinkedList.head.next.previous.value).to.equal(5);
+  });
+
+  it("should point to correct tail value after removing tail, and point to correct previous node", function(){
+    doublyLinkedList.addToTail(5);
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToTail(2);
+    doublyLinkedList.removeTail();
+    expect(doublyLinkedList.tail.value).to.equal(4);
+    expect(doublyLinkedList.tail.previous.value).to.equal(5);
+  });
+
 });

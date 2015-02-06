@@ -1,8 +1,8 @@
-describe('tree', function() {
+describe('treeWithParent', function() {
   var tree;
 
   beforeEach(function() {
-    tree = Tree();
+    tree = Tree(1);
   });
 
   it('should have methods named "addChild" and "contains", and a property named "value"', function() {
@@ -41,9 +41,16 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
-  it('should correctly refer to a nodes parent', function(){
+  it('should correctly refer to a node\'s parent', function(){
     tree.addChild(5);
-    tree.children[0].addChild(6);
-    expect(tree.children[0].parent.value).to.equal(5);
+    expect(tree.children[0].parent.value).to.equal(1);
   });
+
+
+  it('should remove parent\'s reference to child node', function(){
+    tree.addChild(5);
+    tree.children[0].removeFromParent();
+    expect(tree.children[0]).to.equal(undefined);
+  });
+
 });
