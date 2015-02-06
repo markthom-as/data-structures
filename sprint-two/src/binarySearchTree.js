@@ -14,22 +14,40 @@ BinarySearchTree.prototype.insert = function(newValue){
   if ( !greater && leftOpen ) {
     this.left = new BinarySearchTree(newValue);
   }
-
-
-  //if newValue > this.value && this.left === null
-      //this.left = new BinarySearchTree(newValue);
-  //if newValue > this.value && this.right === null
-      //this.right = new BinarySearchTree(newValue);
-  //
-  //
+  if ( greater && !rightOpen) {
+    this.right.insert(newValue);
+  }
+  if ( !greater && !leftOpen) {
+    this.left.insert(newValue);
+  }
 };
 
-BinarySearchTree.prototype.contains = function(value){
-
+BinarySearchTree.prototype.contains = function(target){
+  var greater = target > this.value;
+  var leftExists = this.left !== null;
+  var rightExists = this.right !== null;
+  if ( this.value === target ) {
+    return true;
+  } else if ( greater && rightExists ) {
+    return this.right.contains(target);
+  } else if ( !greater && leftExists ) {
+    return this.left.contains(target);
+  } else {
+    return false;
+  }
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(cb){
+  var leftExists = this.left !== null;
+  var rightExists = this.right !== null;
 
+  cb(this.value);
+  if ( leftExists ) {
+    this.left.depthFirstLog(cb);
+  }
+  if ( rightExists ) {
+    this.right.depthFirstLog(cb);
+  }
 };
 
 /*
