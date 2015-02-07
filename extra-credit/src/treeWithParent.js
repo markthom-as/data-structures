@@ -15,7 +15,6 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.removeFromParent = function(){
-      console.log( this.children[1] );
   for(var i = 0; i < this.parent.children.length; i++) {
     if(this === this.parent.children[i]){
       this.parent.children.splice(i, i + 1);
