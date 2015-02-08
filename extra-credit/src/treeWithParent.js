@@ -34,6 +34,13 @@ treeMethods.contains = function(target){
   return flag;
 };
 
+//write a function that takes a callback and calls it on every value of the tree
+
+//call the callback on the current node's value
+//check to see if the current node has children
+//call the callback on the children of the current node
+//if there are no children, the function will stop
+
 
 /*
  * Complexity: What is the time complexity of the above functions?

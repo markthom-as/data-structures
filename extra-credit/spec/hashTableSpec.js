@@ -42,19 +42,6 @@ describe('hashTable', function() {
   });
 
   // (Extra credit! Remove the extra "x" when you want the following tests to run)
-  it('should traverse the table correctly', function() {
-    _.each(people, function(person) {
-      var firstName = person[0], lastName = person[1];
-      hashTable.insert(firstName,lastName);
-    });
-    var temp = [];
-    hashTable.traverse(function (key, value){
-       temp.push(value);
-    });
-
-    expect(temp.length).to.equal(people.length);
-  });
-
 
   it('should double in size when needed', function() {
     _.each(people, function(person) {
@@ -75,6 +62,10 @@ describe('hashTable', function() {
     hashTable.remove('Steven');
     hashTable.remove('John');
     hashTable.remove('Mr.');
+    // console.log(hashTable._size);
+    // hashTable._storage.each(function(x){
+    //   console.log(x);
+    // })
     expect(hashTable._limit).to.equal(8);
   });
 });
